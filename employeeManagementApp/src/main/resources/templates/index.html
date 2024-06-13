@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List Page</title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+   margin-left: auto;
+  margin-right: auto;
+  width:100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.tablediv {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+</style>
+</head>
+<body>
+<div style="background-color:#1e90ff;color:white;height:40px;padding:5px">
+<h2>User Management App</h2><br><br><br>
+</div>
+
+<h1 style="text-align:center">Users List</h1>
+<div class="tablediv"> 
+ <a href="/addUser" class="button" style="background-color:#1e90ff;color:white;border:none;padding:10px">Add User</a>
+<br><br>
+<table>
+    <tr>
+    	<th>User First Name</th>
+        <th>User Last Name</th>
+        <th>User Email Id</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="employee: ${employee}">
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.email}"></td>
+        <td>
+        	<a th:href="@{/updateUser/{id}(id = ${employee.id})}" class="button" style="background-color:lightblue;border:none;padding:5px">Update</a>
+        	<a th:href="@{/deleteUser/{id}(id = ${employee.id})}" class="button" style="background-color:red;border:none;padding:5px">Delete</a>
+        	<a th:href="@{/viewUser/{id}(id = ${employee.id})}" class="button" style="background-color:lightblue;border:none;padding:5px">View</a>
+        </td>
+    </tr>
+</table>
+</div>
+<br><br>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User Page</title>
+    <style>
+    	.formdiv {
+			padding-left: 10%;
+			padding-right: 10%;
+		}
+
+	</style>
+</head>
+<body>
+<div style="background-color:#1e90ff;color:white;height:40px;padding:5px">
+<h3>Update User Details</h3>
+</div><br><br>
+<div class="formdiv">
+<form action="/updateUser" method="post" th:object="${employee}">
+    <!-- name,price,category  -->
+
+    <label for="firstname">Employee First Name:	</label>
+    <input type="text" name="firstName" id="firstName" th:value="${employee.firstName}" required><br><br>
+    
+    <label for="lastname">Employee Last Name:	</label>
+    <input type="text" name="lastName" id="lastName" th:value="${employee.lastName}" required> <br><br>
+
+    <label for="email">Employee Email:	</label>
+    <input type="text" name="email" id="email" th:value="${employee.email}"><br><br>
+        
+    <input type="hidden" id="id" name="id" th:value="${employee.id}">
+
+    <button type="submit" style="background-color:lightblue;border:none;padding:5px">Update User</button>
+    <br><br>
+    <a href="/" class="button" style="background-color:lightblue;border:none;padding:5px">Back to Home Page</a>
+</form>
+
+</div>
+
+</body>
+</html> 
